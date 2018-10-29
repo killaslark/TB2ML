@@ -1,3 +1,11 @@
+"""
+NN from scratch.
+"""
+
+# Authors: Gilang Ardyamandala Al Assyifa <gilangardya@gmail.com>
+#          Bobby Indra Nainggolan <kodok.botak12@gmail.com>
+#          Mico <>
+
 import numpy as np
 
 def identity(x):
