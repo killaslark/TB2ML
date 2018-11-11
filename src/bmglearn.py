@@ -25,7 +25,10 @@ class NeuralNetwork:
         self.n_hidden_layers = n_hidden_layers
         
     
-    def append_layer(self, prev_neurons,curr_neurons):
+    def last_layer_neuron(self):
+        return len(self.net(len(self.net)))
+
+    def append_layer(self, prev_neurons,curr_neurons = last_layer_neuron()):
         hidden_layer = [ {'weights': np.random.uniform(size=prev_neurons)} for i in range(curr_neurons)]
         self.net.append(hidden_layer)
         
