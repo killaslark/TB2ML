@@ -24,14 +24,16 @@ class NeuralNetwork:
         
         self.n_hidden_layers = n_hidden_layers
         
-    
     def last_layer_neuron(self):
-        return len(self.net(len(self.net)))
+        return len(self.net[-1])
+    
+    def append_layer(self, curr_neurons, input_dim=-1):
+        if (input_dim == -1):
+            input_dim = self.last_layer_neuron()
 
-    def append_layer(self, prev_neurons,curr_neurons = last_layer_neuron()):
-        hidden_layer = [ {'weights': np.random.uniform(size=prev_neurons)} for i in range(curr_neurons)]
+        hidden_layer = [ {'weights': np.random.uniform(size=input_dim)} for i in range(curr_neurons)]
         self.net.append(hidden_layer)
-        
+
     def initialize_network(self):
         net = list()
         for h in range(self.n_hidden_layers):
@@ -51,6 +53,7 @@ class NeuralNetwork:
             print("Layer {} ".format(i))
             for j,neuron in enumerate(layer,1):
                 print("neuron {} :".format(j),neuron)
+        
                 
 
     def feed_forward(self,input):
@@ -98,7 +101,7 @@ class NeuralNetwork:
                     neuron['weights'][j]+=self.learning_rate*neuron['delta']*inputs[j]
     
     
-    def training(self,X, y, epochs= 128):
+    def training(self, X, y, epochs= 128):
         self.data = X
         errors=[]
         for epoch in range(epochs):
